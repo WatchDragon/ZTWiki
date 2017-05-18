@@ -1,0 +1,47 @@
+$base: #69c;
+$light: #eee;
+$dark: #ccc;
+$hover: #eee;
+$default: #999;
+$primary: #3680bf;
+$success: #5cb85c;
+$warning: #f0ad4e;
+$danger: #d9534f;
+$info: #2db7f5;
+$disabled: #ccc;
+$borderRadius: 4px;
+
+// z-index管理
+$dropDownZIndex: 1986;
+$gutter: 5px;
+
+/*动画*/
+.v-enter-active {
+    animation: v-in .5s;
+}
+
+.v-leave-active {
+    animation: v-out .5s;
+}
+
+@keyframes v-in {
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes v-out {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+}

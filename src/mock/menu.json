@@ -1,0 +1,114 @@
+[{
+    "id": 1,
+    "icon": "plus",
+    "text": "系统设置",
+    "open": true,
+    "children": [{
+        "id": 11,
+        "text": "商品列表",
+        "route": {
+            "path": "/home/goods/list",
+            "query": {
+                "page": 1,
+                "limit": 5
+            }
+        }
+    }, {
+        "id": 19,
+        "text": "商品编辑",
+        "route": {
+            "path": "/home/goods/edit",
+            "query": {
+                "id": 1
+            }
+        }
+    }, {
+        "id": 1921,
+        "text": "测试页面",
+        "route": {
+            "path": "/test"
+        }
+    }]
+}, {
+    "id": 2,
+    "text": "菜单2",
+    "open": true,
+    "children": [{
+        "id": 10,
+        "text": "新增商品",
+        "icon": "plus",
+        "route": {
+            "path": "/home/goods/add"
+        }
+    }, {
+        "id": 12,
+        "text": "主面板",
+        "route": {
+            "path": "/home/index/index"
+        }
+    }, {
+        "id": 13,
+        "text": "readonly集合",
+        "route": {
+            "path": "/home/readonly100"
+        }
+    }, {
+        "id": 1230,
+        "text": "baidu.com",
+        "route": {
+            "path": "/home/goods/iframeA",
+            "query": { "url": "http://baidu.com" }
+        }
+    }, {
+        "id": 1231,
+        "text": "taobao.com",
+        "route": {
+            "path": "/home/goods/iframeB",
+            "query": { "url": "http://taobao.com" }
+        }
+    }, {
+        "id": 14,
+        "text": "拖拽",
+        "route": {
+            "path": "/home/draggable"
+        }
+    }]
+}, {
+    "open": false,
+    "id": 33,
+    "text": "登陆",
+    "route": {
+        "path": "/login"
+    }
+}, {
+    "id": 1000,
+    "icon": "plus",
+    "text": "人员",
+    "open": true,
+    "children": [{
+        "id": 10001,
+        "text": "人员列表",
+        "route": {
+            "path": "/home/staff/list",
+            "query": {
+                "page": 1,
+                "limit": 3
+            }
+        }
+    }, {
+        "id": 10002,
+        "text": "人员新增",
+        "route": {
+            "path": "/home/staff/add"
+        }
+    }, {
+        "id": 10003,
+        "text": "人员编辑",
+        "route": {
+            "path": "/home/staff/edit",
+            "query": {
+                "id": 1
+            }
+        }
+    }]
+}]
