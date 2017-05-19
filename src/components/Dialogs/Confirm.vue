@@ -13,7 +13,7 @@
     </transition>
 </template>
 <script>
-import VButton from '../form/Button'
+import VButton from '../Form/Button'
 export default {
     name: 'Confirm',
 

@@ -18,7 +18,7 @@ export default{
         return true;
       }
     },
-    disabled: {type: Boolean},
+    disabled: {type: Boolean,default(){return true;}},
     value: {}
   },
   data(){

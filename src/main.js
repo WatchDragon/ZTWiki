@@ -7,6 +7,7 @@ if (process.env.NODE_ENV == 'production') {
   window.API_ROOT = './mock';
   window.LOGIN_URL = './mock/login';
   window.MENU_URL = './mock/menu';
+  window.DOC_URL='./mock/doc';
 }
 
 import Vue from 'vue'
@@ -16,6 +17,9 @@ import router from './router'
 
 import './scss/global.scss'
 window.axios = require('axios');
+window.marked = require('marked');
+window.cursor = require('../static/js/cursor').default.cursor;
+
 if(store.state.loginModule.accessToken != null)
   axios.defaults.headers.common['Access-Token'] = store.state.loginModule.accessToken;
 window.qs = require('qs');

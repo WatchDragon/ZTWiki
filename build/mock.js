@@ -20,6 +20,13 @@ module.exports = function(express, app) {
     }
   });
 
+  app.get('/mock/doc',function(req,res){
+     let id = req.query.id;
+     let doc = fs.readFileSync('./src/mock/doc1.md', 'utf8');
+     let data={status:1,data:{doc:doc}};
+     res.json(data);
+  });
+
   app.get('/mock/menu', function (req, res) {
     let perid = '';
     let id = req.query.id;
@@ -38,19 +45,6 @@ module.exports = function(express, app) {
                 {text: perid + '3', hasChild: false, id: parseInt(id + '3'), open: false}
             ]
         },
-    };
-    res.json(data);
-  });
-
-  app.get('/mock/menus', function(req, res) {
-    var menu = fs.readFileSync('./src/mock/menu.json', 'utf8');
-
-    var data = {
-      status: 1,
-      data: {
-        menu: JSON.parse(menu)
-      },
-      message: '操作成功!'
     };
     res.json(data);
   });

@@ -4,7 +4,7 @@
       <template v-for="item in menu">
         <li class="hasChildren"  @click.stop="toggle(item)">
           <span>{{item.text}}</span><i v-if="item.hasChild" :class="{caret: true, rotate: !item.open}"></i>
-          <tree-view :mid="item.id" v-if="item.childLoaded" v-show="item.open" :mdata="item.children"></tree-view>
+          <tree-view @childClick="childClick" :mid="item.id" v-if="item.childLoaded" v-show="item.open" :mdata="item.children"></tree-view>
         </li>
       </template>
     </ul>
@@ -12,44 +12,51 @@
 </template>
 <script>
   export default {
-    name: 'TreeView',
-    props: {
-      mid: {
-        type: Number,
-        default(){
-          return 0;
-        }
-      }
-    },
-    data() {
-      return {
-        menu: [],
-      }
-    },
-
-    mounted() {
-      axios.get(MENU_URL, {params: {id: this.mid}}).then(response => {
-        if (response.data.status == 1)
-          this.menu = response.data.data.menu;
-        else
-          this.$alert(response.data.message);
-      }).catch((error) => {
-        console.log(error);
-      });
-      window.onload = () => this.resize();
-      window.onresize = () => this.resize();
-    },
-
-    methods: {
-      toggle(item) {
-        item.childLoaded=true;
-        item.open = !item.open;
+      name: 'TreeView',
+      props: {
+          mid: {
+              type: Number,
+              default(){
+                  return 0;
+              }
+          }
       },
-      resize: function () {
-        var height = document.documentElement.clientHeight - 50;
-        this.$refs.treeView.style.height = height + 'px';
+      data() {
+          return {
+              menu: [],
+          }
+      },
+
+      mounted() {
+          axios.get(MENU_URL, {params: {id: this.mid}}).then(response => {
+              if (response.data.status == 1)
+                  this.menu = response.data.data.menu;
+              else
+                  this.$alert(response.data.message);
+          }).catch((error) => {
+              console.log(error);
+          });
+          window.onload = () => this.resize();
+          window.onresize = () => this.resize();
+      },
+
+      methods: {
+          toggle(item) {
+              if (item.hasChild) {
+                  item.childLoaded = true;
+                  item.open = !item.open;
+              } else {
+                  this.$emit('childClick', item.id);
+              }
+          },
+          resize: function () {
+              var height = document.documentElement.clientHeight - 50;
+              this.$refs.treeView.style.height = height + 'px';
+          },
+          childClick(id){
+              this.$emit('childClick', id);
+          }
       }
-    }
   }
 </script>
 <style scoped lang="scss">
